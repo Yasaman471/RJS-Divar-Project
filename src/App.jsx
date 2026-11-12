@@ -1,5 +1,12 @@
+import AuthPage from "./Pages/AuthPage";
+
 function App() {
-  return <h1>پروژه دیوار</h1>;
+  return (
+    <>
+      <AuthPage />
+      <h1>پروژه دیوار</h1>;
+    </>
+  );
 }
 
 export default App;
