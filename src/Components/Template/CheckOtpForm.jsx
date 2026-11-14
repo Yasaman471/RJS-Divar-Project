@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { CheckOtp } from "../../Services/auth";
-import { setCookie } from "../../utils/Cookie";
+import { CheckOtp } from "@/services/auth";
+import { setCookie } from "@/utils/cookie";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
   const submitHandler = async (e) => {

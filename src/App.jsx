@@ -1,13 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import AuthPage from "./Pages/AuthPage";
+import Router from "./router/Router";
 
 function App() {
   return (
-    <>
-      <AuthPage />
-      <h1>پروژه دیوار</h1>
+    <BrowserRouter>
+      <Router />
       <Toaster position="top-center" />
-    </>
+    </BrowserRouter>
   );
 }
 
