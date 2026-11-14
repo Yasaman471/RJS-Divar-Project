@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { CheckOtp } from "../../Services/auth";
+import { setCookie } from "../../utils/Cookie";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
   const submitHandler = async (e) => {
@@ -12,6 +13,7 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
 
     console.log({ response, error });
     if (response) {
+      setCookie(response.data);
       toast.success("ورود موفقیت آمیز بود");
     }
     if (error) {
