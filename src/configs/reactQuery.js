@@ -7,4 +7,4 @@ const defaultOptions = {
   },
 };
 
-export { defaultOptions };
+export default defaultOptions;

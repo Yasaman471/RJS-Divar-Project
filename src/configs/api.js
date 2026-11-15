@@ -1,3 +1,5 @@
+import { getNewTokens } from "@/services/token";
+import { getcookie } from "@/utils/cookie";
 import axios from "axios";
 
 const api = axios.create({
@@ -6,5 +8,34 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+api.interceptors.request.use(
+  (request) => {
+    const accessToken = getcookie("accessToken");
+    if (accessToken) {
+      request.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+    return request;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
+
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      const res = await getNewTokens();
+      if (!res?.response) return;
+      return api(originalRequest);
+    }
+  },
+);
 
 export default api;
