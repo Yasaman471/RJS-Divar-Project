@@ -1,8 +1,17 @@
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { CheckOtp } from "@/services/auth";
 import { setCookie } from "@/utils/cookie";
+import getProfileData from "@/services/user";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
+  const navigate = useNavigate();
+  const { refetch } = useQuery({
+    queryKey: ["Profile"],
+    queryFn: getProfileData,
+  });
+
   const submitHandler = async (e) => {
     e.preventDefault();
     if (code.length !== 5) {
@@ -11,9 +20,11 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
     }
     const { response, error } = await CheckOtp(mobile, code);
 
-    console.log({ response, error });
     if (response) {
       setCookie(response.data);
+      navigate("/");
+      refetch();
+      console.log({ response });
       toast.success("ورود موفقیت آمیز بود");
     }
     if (error) {
