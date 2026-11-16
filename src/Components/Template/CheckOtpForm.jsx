@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { CheckOtp } from "@/services/auth";
 import { setCookie } from "@/utils/cookie";
 import getProfileData from "@/services/user";
+import styles from "./CheckOtpForm.module.css";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
     }
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <p>تایید کد پیامک شده</p>
       <span>کد پیامک شده به شماره «{mobile}»را وارد کنید</span>
       <label htmlFor="input">کد تایید را وارد کنید</label>
@@ -44,7 +45,11 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
         onChange={(e) => setCode(e.target.value)}
       />
       <button type="submit">ورود</button>
-      <button type="button" onClick={() => setStep(1)}>
+      <button
+        type="button"
+        onClick={() => setStep(1)}
+        className={styles.backButton}
+      >
         تغییر شماره موبایل
       </button>
     </form>

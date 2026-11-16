@@ -2,10 +2,11 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import HomePage from "@/Pages/HomePage";
-import DashboardPage from "@/Pages/DashboardPage";
-import AuthPage from "@/Pages/AuthPage";
-import AdminPage from "@/Pages/AdminPage";
 import PageNotFound from "@/Pages/404";
+import AdminPage from "@/Pages/AdminPage";
+import AuthPage from "@/Pages/AuthPage";
+import DashboardPage from "@/Pages/DashboardPage";
+import Loader from "@/Components/template/module/Loader";
 import getProfileData from "@/services/user";
 
 function Router() {
@@ -15,7 +16,7 @@ function Router() {
   });
   console.log({ data, isLoading, error });
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Loader />;
 
   return (
     <Routes>

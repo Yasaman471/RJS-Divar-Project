@@ -26,9 +26,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-
-
-
-//feat: protect routes and redirect after login
-// feat: add auth loading states and styles
