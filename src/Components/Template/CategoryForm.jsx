@@ -10,13 +10,15 @@ function CategoryForm() {
     slug: "",
     icon: "",
   });
+
   const queryClient = useQueryClient();
-  const { mutate, isPending, isError, error, data } = useMutation({
+
+  const { mutate, isPending, isError, error } = useMutation({
     mutationFn: addCategory,
     onSuccess: () => {
       toast.success("دسته‌بندی با موفقیت ثبت شد");
       setForm({ name: "", slug: "", icon: "" });
-      queryClient.invalidateQueries({ queryKey: ["categories"] });
+      queryClient.invalidateQueries({ queryKey: ["get-category"] });
     },
     onError: (error) => {
       const status = error?.response?.status;
@@ -28,8 +30,6 @@ function CategoryForm() {
       }
     },
   });
-
-  console.log({ isPending, isError, error, data });
 
   const changeHandler = (event) => {
     const { name, value } = event.target;

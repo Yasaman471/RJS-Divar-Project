@@ -1,0 +1,71 @@
+[33mcommit f83f24a4dc4c00d9bef38fba3219db1ad12d7be1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/admin-panel[m[33m, [m[1;31morigin/feature/admin-panel[m[33m)[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Wed Nov 18 12:28:50 2026 +0330
+
+    feat: add admin category creation form
+
+[33mcommit 86e49beb936d8fe07c8101e67bc825b4fd899874[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Tue Nov 17 08:56:11 2026 +0330
+
+    feat: setup admin layout with header and footer
+
+[33mcommit 4c4988172d2e11ac10755820d938ccc3facbe4ed[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/feature/auth[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/auth[m[33m)[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Mon Nov 16 16:02:47 2026 +0330
+
+     feat: add auth loading states and styles
+
+[33mcommit 26b43c799a8f10d89136f698abd8026200350155[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Mon Nov 16 11:59:22 2026 +0330
+
+    feat: protect routes and redirect after login
+
+[33mcommit 6b72d56e0780649dc6205374d355938790c7b175[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Sun Nov 15 12:41:49 2026 +0330
+
+    feat: handle user data and token refresh
+
+[33mcommit a5099712e0cd437d92ecfe4a679870ff75f860b5[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Sat Nov 14 17:37:57 2026 +0330
+
+    chore: configure react query client
+
+[33mcommit 45d45fb3ecef0558e361034ee01dd31a5f1b681e[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Sat Nov 14 14:55:55 2026 +0330
+
+    feat: add application routes
+
+[33mcommit eaf8ff5aa2a379b27c9c28850587be914f90f3fc[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Sat Nov 14 09:18:17 2026 +0330
+
+    feat(auth): store authentication tokens
+
+[33mcommit 43bbd9fdb1711090fff77e50b21b2ab3227e0d26[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Sat Nov 14 08:42:44 2026 +0330
+
+    feat(auth): verify otp code
+
+[33mcommit c6981e28b882136dd45c6f64d986bcef94f9aaa6[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Thu Nov 12 19:21:24 2026 +0330
+
+    feat(auth): integrate SendOtp API with success/error toast in SendOtpForm
+
+[33mcommit c86e98e96e3679144a560837a02f9bea1e896c06[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Thu Nov 12 12:19:22 2026 +0330
+
+    feat(auth): add AuthPage with SendOtp/CheckOtp step structure
+
+[33mcommit 6d9dbd530bde6751a00d76e9e3117e332ea032d7[m
+Author: Yasaman Abedi <Yasaman471@gmail.com>
+Date:   Wed Nov 11 08:59:17 2026 +0330
+
+    chore: initial project setup with fonts and base styles

@@ -10,11 +10,11 @@ import Loader from "@/Components/template/module/Loader";
 import getProfileData from "@/services/user";
 
 function Router() {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["Profile"],
     queryFn: getProfileData,
   });
-  console.log({ data, isLoading, error });
+  // console.log({ data, isLoading, error });
 
   if (isLoading) return <Loader />;
 

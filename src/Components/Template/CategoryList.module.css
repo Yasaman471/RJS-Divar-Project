@@ -1,0 +1,61 @@
+.list {
+    margin: 50px 0 70px;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 15px;
+}
+
+
+.info img {
+    width: 24px;
+    height: 24px;
+}
+
+.info h5 {
+    margin: 0;
+    font-size: 16px;
+    min-width: 100px;
+    color: #333;
+}
+
+.info p {
+    text-align: center;
+    margin: 0;
+    color: #a62626;
+    font-size: 0.9rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.deleteBtn {
+    background-color: #a62626;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.deleteBtn:hover {
+    background-color: #e03131;
+}
+
+.deleteBtn:disabled {
+    background-color: #ffc9c9;
+    cursor: not-allowed;
+}
