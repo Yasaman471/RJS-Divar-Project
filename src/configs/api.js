@@ -1,4 +1,4 @@
-import { getNewTokens } from "@/services/token";
+import { getNewTokens } from "@/Services/token";
 import { getcookie } from "@/utils/cookie";
 import axios from "axios";
 
@@ -35,6 +35,7 @@ api.interceptors.response.use(
       if (!res?.response) return;
       return api(originalRequest);
     }
+    return Promise.reject(error);
   },
 );
 
