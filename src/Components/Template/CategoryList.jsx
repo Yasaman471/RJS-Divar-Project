@@ -14,12 +14,14 @@ function CategoryList() {
 
   const { mutate } = useMutation({
     mutationFn: deleteCategory,
-    onSuccess: () => {
-      toast.success("دسته‌بندی با موفقیت حذف شد");
+    onSuccess: (res) => {
+      toast.success(res?.data?.message || "دسته‌بندی با موفقیت حذف شد");
       queryClient.invalidateQueries({ queryKey: ["get-category"] });
     },
-    onError: () => {
-      toast.error("خطایی در حذف دسته‌بندی رخ داد");
+    onError: (error) => {
+      toast.error(
+        error.response?.data?.message || "خطایی در حذف دسته‌بندی رخ داد",
+      );
     },
   });
 

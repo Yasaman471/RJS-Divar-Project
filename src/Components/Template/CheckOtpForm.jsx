@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { CheckOtp } from "@/services/auth";
+import { CheckOtp } from "@/Services/auth";
 import { setCookie } from "@/utils/cookie";
-import getProfileData from "@/services/user";
+import getProfileData from "@/Services/user";
 import styles from "./CheckOtpForm.module.css";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
@@ -25,8 +25,7 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
       setCookie(response.data);
       navigate("/");
       refetch();
-      console.log({ response });
-      toast.success("ورود موفقیت آمیز بود");
+      toast.success(response?.data?.message || "ورود موفقیت آمیز بود");
     }
     if (error) {
       toast.error(error.response?.data?.message || "کد تایید درست نمی باشد");

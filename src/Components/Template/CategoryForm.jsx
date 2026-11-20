@@ -15,18 +15,20 @@ function CategoryForm() {
 
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: addCategory,
-    onSuccess: () => {
-      toast.success("دسته‌بندی با موفقیت ثبت شد");
+    onSuccess: (res) => {
+      toast.success(res?.data?.message || "دسته‌بندی با موفقیت ثبت شد");
       setForm({ name: "", slug: "", icon: "" });
       queryClient.invalidateQueries({ queryKey: ["get-category"] });
     },
     onError: (error) => {
-      const status = error?.response?.status;
-
       if (status === 409) {
-        toast.error("این دسته‌بندی از قبل وجود دارد");
+        toast.error(
+          error.response?.data?.message || "این دسته‌بندی از قبل وجود دارد",
+        );
       } else {
-        toast.error("خطایی در ثبت دسته‌بندی رخ داد");
+        toast.error(
+          error.response?.data?.message || "خطایی در ثبت دسته‌بندی رخ داد",
+        );
       }
     },
   });

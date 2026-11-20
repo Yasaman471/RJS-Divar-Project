@@ -31,8 +31,8 @@ function AddPost() {
           Authorization: `Bearer ${token}`,
         },
       }),
-    onSuccess: () => {
-      toast.success("آگهی با موفقیت ثبت شد");
+    onSuccess: (res) => {
+      toast.success(res?.data?.message || "آگهی با موفقیت ثبت شد");
       setForm({
         title: "",
         content: "",
@@ -45,7 +45,8 @@ function AddPost() {
         fileInputRef.current.value = "";
       }
     },
-    onError: () => toast.error("ثبت آگهی انجام نشد"),
+    onError: (error) =>
+      toast.error(error.response?.data?.message || "ثبت آگهی انجام نشد"),
   });
 
   const changeHandler = (event) => {
@@ -65,24 +66,6 @@ function AddPost() {
       formData.append(i, form[i]);
     }
     mutate(formData);
-    //   .post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   })
-    // .then(() => {
-    //   toast.success("آگهی با موفقیت ثبت شد");
-    //   setForm({
-    //     title: "",
-    //     content: "",
-    //     city: "",
-    //     category: "",
-    //     amount: "",
-    //     images: null,
-    //   });
-    // })
-    // .catch(() => toast.error("ثبت آگهی انجام نشد"));
   };
 
   return (

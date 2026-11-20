@@ -14,8 +14,8 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Router />
+          <Toaster position="top-center" />
         </Layout>
-        <Toaster position="top-center" />
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
