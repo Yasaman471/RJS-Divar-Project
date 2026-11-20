@@ -35,3 +35,26 @@
     font-size: 0.9rem;
     cursor: pointer;
 }
+
+@media (min-width: 768px) {
+    .post {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .post img {
+        width: 100px;
+        height: 70px;
+        flex: 0 0 100px;
+    }
+
+    .post .price {
+        width: 150px;
+        text-align: center;
+        display: block;
+    }
+
+    .post button {
+        width: auto;
+    }
+}

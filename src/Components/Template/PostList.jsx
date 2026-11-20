@@ -1,16 +1,32 @@
-import { useQuery } from "@tanstack/react-query";
-import { getPostData } from "@/Services/user";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { deletePost, getPostData } from "@/Services/user";
 import Loader from "./module/Loader";
 import { sp } from "@/utils/numbers";
 import styles from "./PostList.module.css";
+import toast from "react-hot-toast";
 
 function PostList() {
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ["my-post-list"],
     queryFn: getPostData,
   });
-  console.log("پاسخ دریافتی از سرور:", data);
+  const { mutate } = useMutation({
+    mutationFn: deletePost,
+    onSuccess: (res) => {
+      toast.success(res?.data?.message || "آگهی با موفقیت حذف شد");
+      queryClient.invalidateQueries({ queryKey: ["my-post-list"] });
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || "خطایی در حذف آگهی رخ داد");
+    },
+  });
 
+  const deleteHandler = (id) => {
+    if (confirm("آیا از حذف این آگهی مطمئن هستید؟")) {
+      mutate(id);
+    }
+  };
   return (
     <div className={styles.list}>
       {isLoading ? (
@@ -26,12 +42,13 @@ function PostList() {
               />
               <div>
                 <p>{post.options.title}</p>
-                <span>{post.options.content}</span>
+                <span>{post.options?.content}</span>
               </div>
               <div className={styles.price}>
                 <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
                 <span>{sp(post.amount)}تومان</span>
               </div>
+              <button onClick={() => deleteHandler(post._id)}>حذف آگهی</button>
             </div>
           ))}
         </>

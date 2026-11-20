@@ -7,26 +7,30 @@
 
 .post {
     display: flex;
-    align-tracks: center;
+    align-items: center;
+    gap: 16px;
     border: 2px solid #eaeaea;
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 10px 0;
-    padding: 5px;
+    padding: 12px;
 }
 
 .post img {
+    flex: 0 0 100px;
     width: 100px;
     height: 70px;
-    border-radius: 3px;
-    margin-left: 30px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-.post div {
-    width: 100%;
+.post>div:not(.price) {
+    flex: 1;
+    min-width: 0;
 }
 
 .post p {
     font-size: 0.9rem;
+    margin: 0 0 6px;
 }
 
 .post span {
@@ -35,6 +39,31 @@
 }
 
 .post .price {
-    width: 150px;
+    flex: 0 0 150px;
     text-align: center;
+}
+
+.post button {
+    flex: 0 0 auto;
+    background-color: #a62626;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.post button:hover {
+    background-color: #861d1d;
+}
+
+.post button:active {
+    transform: scale(0.97);
+}
+
+.post button:focus-visible {
+    outline: 3px solid #e6a0a0;
+    outline-offset: 2px;
 }

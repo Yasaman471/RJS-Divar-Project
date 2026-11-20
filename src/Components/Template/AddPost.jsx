@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState, useRef } from "react";
 import toast from "react-hot-toast";
 import { getCategory } from "@/Services/admin";
@@ -22,6 +22,7 @@ function AddPost() {
   });
 
   const fileInputRef = useRef(null);
+  const queryClient = useQueryClient();
   const token = getcookie("accessToken");
   const { mutate, isPending } = useMutation({
     mutationFn: (formData) =>
@@ -44,6 +45,9 @@ function AddPost() {
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
+      queryClient.invalidateQueries({
+        queryKey: ["my-post-list"],
+      });
     },
     onError: (error) =>
       toast.error(error.response?.data?.message || "ثبت آگهی انجام نشد"),

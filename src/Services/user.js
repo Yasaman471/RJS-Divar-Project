@@ -9,4 +9,6 @@ const getProfileData = () =>
 const getPostData = () => {
   return api.get("post/my");
 };
-export { getProfileData, getPostData };
+
+const deletePost = (id) => api.delete(`/post/delete/${id}`);
+export { getProfileData, getPostData, deletePost };
