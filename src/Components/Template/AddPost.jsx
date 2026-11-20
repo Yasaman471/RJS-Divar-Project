@@ -1,6 +1,9 @@
+import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useState, useRef } from "react";
+import toast from "react-hot-toast";
 import { getCategory } from "@/Services/admin";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { getcookie } from "@/utils/cookie";
 import styles from "./AddPost.module.css";
 
 function AddPost() {
@@ -12,9 +15,37 @@ function AddPost() {
     amount: "",
     images: null,
   });
+
   const { data } = useQuery({
     queryKey: ["get-category"],
     queryFn: getCategory,
+  });
+
+  const fileInputRef = useRef(null);
+  const token = getcookie("accessToken");
+  const { mutate, isPending } = useMutation({
+    mutationFn: (formData) =>
+      axios.post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    onSuccess: () => {
+      toast.success("آگهی با موفقیت ثبت شد");
+      setForm({
+        title: "",
+        content: "",
+        city: "",
+        category: "",
+        amount: "",
+        images: null,
+      });
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    },
+    onError: () => toast.error("ثبت آگهی انجام نشد"),
   });
 
   const changeHandler = (event) => {
@@ -26,9 +57,32 @@ function AddPost() {
     }
   };
 
-  const addHandler = () => {
+  const addHandler = (event) => {
     event.preventDefault();
-    console.log(form);
+
+    const formData = new FormData();
+    for (let i in form) {
+      formData.append(i, form[i]);
+    }
+    mutate(formData);
+    //   .post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    // .then(() => {
+    //   toast.success("آگهی با موفقیت ثبت شد");
+    //   setForm({
+    //     title: "",
+    //     content: "",
+    //     city: "",
+    //     category: "",
+    //     amount: "",
+    //     images: null,
+    //   });
+    // })
+    // .catch(() => toast.error("ثبت آگهی انجام نشد"));
   };
 
   return (
@@ -42,7 +96,7 @@ function AddPost() {
         value={form.title}
         onChange={changeHandler}
       />
-      <label htmlFor="title">توضیحات</label>
+      <label htmlFor="content">توضیحات</label>
       <textarea
         name="content"
         id="content"
@@ -51,7 +105,7 @@ function AddPost() {
       />
       <label htmlFor="amount">قیمت</label>
       <input
-        type="text"
+        type="number"
         name="amount"
         value={form.amount}
         id="amount"
@@ -79,8 +133,16 @@ function AddPost() {
         ))}
       </select>
       <label htmlFor="images">عکس</label>
-      <input type="file" name="images" id="images" onChange={changeHandler} />
-      <button type="submit">ایجاد</button>
+      <input
+        type="file"
+        name="images"
+        id="images"
+        onChange={changeHandler}
+        ref={fileInputRef}
+      />
+      <button type="submit" disabled={isPending}>
+        {isPending ? "در حال ارسال..." : "ایجاد"}
+      </button>
     </form>
   );
 }
