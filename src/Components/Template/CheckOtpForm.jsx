@@ -3,7 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { CheckOtp } from "@/Services/auth";
 import { setCookie } from "@/utils/cookie";
-import getProfileData from "@/Services/user";
+import { getProfileData } from "@/Services/user";
+
 import styles from "./CheckOtpForm.module.css";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {

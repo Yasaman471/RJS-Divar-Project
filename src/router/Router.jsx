@@ -7,14 +7,13 @@ import AdminPage from "@/Pages/AdminPage";
 import AuthPage from "@/Pages/AuthPage";
 import DashboardPage from "@/Pages/DashboardPage";
 import Loader from "@/Components/template/module/Loader";
-import getProfileData from "@/services/user";
+import { getProfileData } from "@/Services/user";
 
 function Router() {
   const { data, isLoading } = useQuery({
     queryKey: ["Profile"],
     queryFn: getProfileData,
   });
-  // console.log({ data, isLoading, error });
 
   if (isLoading) return <Loader />;
 

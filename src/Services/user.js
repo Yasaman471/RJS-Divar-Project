@@ -6,4 +6,7 @@ const getProfileData = () =>
     .then((res) => res || false)
     .catch((err) => err || false);
 
-export default getProfileData;
+const getPostData = () => {
+  return api.get("post/my");
+};
+export { getProfileData, getPostData };
