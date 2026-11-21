@@ -1,0 +1,22 @@
+.home {
+    direction: rtl;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    align-items: start;
+    gap: 24px;
+
+    width: 100%;
+    max-width: 1440px;
+    box-sizing: border-box;
+    margin: 30px auto;
+    padding: 0 24px;
+}
+
+@media (max-width: 760px) {
+    .home {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 16px;
+        padding: 0 14px;
+    }
+}

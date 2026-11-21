@@ -1,8 +1,9 @@
 import { deleteCategory, getCategory } from "@/Services/admin";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import Loader from "./module/Loader";
+
 import toast from "react-hot-toast";
 import styles from "./CategoryList.module.css";
+import Loader from "../module/Loader";
 
 function CategoryList() {
   const queryClient = useQueryClient();

@@ -1,9 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deletePost, getPostData } from "@/Services/user";
-import Loader from "./module/Loader";
+
 import { sp } from "@/utils/numbers";
 import styles from "./PostList.module.css";
 import toast from "react-hot-toast";
+import Loader from "../module/Loader";
 
 function PostList() {
   const queryClient = useQueryClient();

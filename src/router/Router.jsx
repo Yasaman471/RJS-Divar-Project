@@ -6,8 +6,8 @@ import PageNotFound from "@/Pages/404";
 import AdminPage from "@/Pages/AdminPage";
 import AuthPage from "@/Pages/AuthPage";
 import DashboardPage from "@/Pages/DashboardPage";
-import Loader from "@/Components/template/module/Loader";
 import { getProfileData } from "@/Services/user";
+import Loader from "@/Components/module/Loader";
 
 function Router() {
   const { data, isLoading } = useQuery({

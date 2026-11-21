@@ -11,4 +11,9 @@ const getPostData = () => {
 };
 
 const deletePost = (id) => api.delete(`/post/delete/${id}`);
-export { getProfileData, getPostData, deletePost };
+
+const getAllpost = () => {
+  return api.get("");
+};
+
+export { getProfileData, getPostData, deletePost, getAllpost };
