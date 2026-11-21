@@ -1,5 +1,5 @@
 import api from "@/configs/api";
-import { getcookie } from "@/utils/cookie";
+import { getcookie, removecookie } from "@/utils/cookie";
 
 const getNewTokens = async () => {
   const refreshToken = getcookie("refreshToken");
@@ -14,5 +14,8 @@ const getNewTokens = async () => {
     return { error };
   }
 };
-
-export { getNewTokens };
+const logout = () => {
+  removecookie("accessToken");
+  removecookie("refreshToken");
+};
+export { getNewTokens, logout };

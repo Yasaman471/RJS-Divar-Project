@@ -9,4 +9,7 @@ const getcookie = (cookieName) => {
     .find((token) => token.trim().split("=")[0] === cookieName)
     ?.split("=")[1];
 };
-export { setCookie, getcookie };
+const removecookie = (name) => {
+  document.cookie = `${name}=; max-age=0; path=/`;
+};
+export { setCookie, getcookie, removecookie };

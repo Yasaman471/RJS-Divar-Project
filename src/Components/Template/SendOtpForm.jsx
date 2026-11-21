@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { SendOtp } from "@/services/auth";
+import { SendOtp } from "@/Services/auth";
 import styles from "./SendOtpForm.module.css";
 
 function SendOtpForm({ setStep, setMobile, mobile }) {
